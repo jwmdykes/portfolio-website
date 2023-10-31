@@ -11,7 +11,7 @@ interface ExperienceCardProps {
 
 export default function ExperienceCard(props: ExperienceCardProps) {
   return (
-      <div className='hover:before:backdrop-blur-3xl hover:before:drop-shadow-xl hover:before:stroke hover:before:bg-gradient-to-br hover:before:from-[#ffffff1a] hover:before:to-transparent before:rounded-md before:absolute before:-z-10 before:-top-3 before:-bottom-3 before:-right-4 before:-left-4 relative z-10 flex flex-col gap-4'>
+      <div className='hover:before:border-t hover:before:border-[#ffffff2c] hover:before:backdrop-blur-3xl hover:before:drop-shadow-2xl hover:before:stroke hover:before:bg-gradient-to-br hover:before:from-[#ffffff1a] hover:before:to-transparent before:rounded-md before:absolute before:-z-10 before:-top-3 before:-bottom-3 before:-right-4 before:-left-4 relative z-10 flex flex-col gap-4'>
         <div className='flex flex-row gap-8'>
           <div className='text-neutral-color flex min-w-fit'>
             <span>{props.date}</span>

@@ -54,7 +54,7 @@ export default function Home() {
               <h3>My Experience</h3>
               <ExperienceCard
                 skills={['Cryptography', 'Python', 'Mathematics', 'C/C++']}
-                company='Canadian Center for Cyber Security'
+                company='Canadian Centre for Cyber Security'
                 date='2020 — Present'
                 title='Cryptanalyst'
                 description=<>
