@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { useState, useEffect, useRef, useCallback} from 'react';
-import { act } from 'react-dom/test-utils';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
@@ -84,7 +83,7 @@ export default function Home() {
                   >
                     <FontAwesomeIcon
                       icon={faGithub}
-                      width={24}
+                      size='xl'
                       aria-hidden='true'
                     />
                   </a>
@@ -98,7 +97,7 @@ export default function Home() {
                   >
                     <FontAwesomeIcon
                       icon={faLinkedin}
-                      width={24}
+                      size='xl'
                       aria-hidden='true'
                     />
                   </a>
@@ -107,7 +106,7 @@ export default function Home() {
                   <a href='mailto:98johndykes@gmail.com' aria-label='Email'>
                     <FontAwesomeIcon
                       icon={faEnvelope}
-                      width={24}
+                      size='xl'
                       aria-hidden='true'
                     />
                   </a>
