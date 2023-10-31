@@ -5,7 +5,7 @@ interface ExperienceCardProps {
   company: string;
   date: string;
   title: string;
-  description: ReactNode;
+  description: string;
   skills: Array<string>;
 }
 
@@ -25,8 +25,10 @@ export default function ExperienceCard(props: ExperienceCardProps) {
                 {props.title}
               </span>
             </div>
-            {props.description}
-          </div>
+            <p className='text-sm'>
+              {props.description}
+            </p>
+           </div>
         </div>
         <div className='flex gap-4 flex-wrap'>
           {props.skills.map((skill, index) => (
