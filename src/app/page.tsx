@@ -127,18 +127,18 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='relative bg-background-color min-h-screen flex flex-row justify-center px-20'>
+    <div className='relative bg-background-color min-h-screen flex flex-row justify-center md:px-20'>
       <BackgroundOvals></BackgroundOvals>
 
       <div className='container'>
-        <div className='flex flex-row text-body-text-color justify-between gap-4'>
+        <div className='flex flex-col md:flex-row text-body-text-color justify-between gap-4'>
           {/* Fixed column */}
-          <div className='flex flex-col justify-between gap-4 max-h-screen w-1/2 py-24 top-0 sticky'>
+          <div className='flex flex-col justify-between gap-12 md:gap-4 md:max-h-screen w-full md:w-1/2 pt-8 md:py-24 z-10 md:top-0 sticky'>
             <div className='flex flex-col space-y-2'>
               <h1>John Dykes</h1>
               <h2>Programmer and Mathematician</h2>
             </div>
-            <div>
+            <div className='hidden md:block'>
               <ul className='flex flex-col gap-4'>
                 <NavigationElement
                   focused={activeSection == 'about'}
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
           </div>
           {/* Scrollable column */}
-          <div className='relative flex flex-col ml-auto w-1/2'>
+          <div className='relative flex flex-col md:ml-auto md:w-1/2'>
             <section className='pt-24' id='about' ref={aboutRef}>
               <h3>About Me</h3>
               <p>
