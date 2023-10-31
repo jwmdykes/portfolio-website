@@ -3,7 +3,7 @@ import ExperienceCard from './ExperienceCard';
 
 export default function Home() {
   return (
-    <div className='bg-background-color min-h-screen flex flex-row justify-center'>
+    <div className='bg-background-color min-h-screen flex flex-row justify-center px-16'>
       <div className='container'>
         <div className='flex flex-row text-body-text-color justify-between gap-4'>
           {/* Fixed column */}
