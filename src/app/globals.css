@@ -10,7 +10,7 @@
     @apply text-xl font-mono text-white-color;
   }
   h3 {
-    @apply text-xl font-medium tracking-h3 font-mono pb-10 text-secondary-highlight-color;
+    @apply text-xl font-medium tracking-h3 font-mono pb-16 text-secondary-highlight-color;
   }
   p {
     @apply text-base leading-relaxed text-body-text-color pb-5;

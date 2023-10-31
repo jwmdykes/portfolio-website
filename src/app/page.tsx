@@ -52,20 +52,45 @@ export default function Home() {
             </section>
             <section>
               <h3>My Experience</h3>
-              <ExperienceCard
-                skills={['Cryptography', 'Python', 'Mathematics', 'C/C++']}
-                company='Canadian Centre for Cyber Security'
-                date='2020 — Present'
-                title='Cryptanalyst'
-                description=<>
-                  <p>
-                    Researching and implementing cryptographic algorithms in
-                    order to ensure cryptographic primitives used to protect
-                    Government of Canada communications continue to be effective
-                    in light of anticipated quantum computing advancements
-                  </p>
-                </>
-              ></ExperienceCard>
+              <div className='flex flex-col gap-20'>
+                <ExperienceCard
+                  skills={['Cryptography', 'Python', 'Mathematics', 'C/C++']}
+                  company='Canadian Centre for Cyber Security'
+                  date='2020 — Present'
+                  title='Cryptanalyst'
+                  description=<>
+                    <p>
+                      Researching and implementing cryptographic algorithms in
+                      order to ensure cryptographic primitives used to protect
+                      Government of Canada communications continue to be
+                      effective in light of anticipated quantum computing
+                      advancements
+                    </p>
+                  </>
+                ></ExperienceCard>
+                <ExperienceCard
+                  skills={[
+                    'Geocomputation',
+                    'Python',
+                    'Statistics',
+                    'Machine Learning',
+                  ]}
+                  company='Communications Research Centre Canada'
+                  date='2019 — 2020'
+                  title='Computer Research Programmer'
+                  description=<>
+                    <p>
+                      Worked on a team applying machine learning and
+                      Geocomputation to telecommunications data, including
+                      estimating the interference that cellular towers have on
+                      each other
+                    </p>
+                  </>
+                ></ExperienceCard>
+              </div>
+            </section>
+            <section>
+              <h3>Projects</h3>
             </section>
           </div>
         </div>
