@@ -22,9 +22,24 @@ export default function Home() {
             </div>
             <div>
               <ul className='flex flex-col gap-4'>
-                <li>About</li>
-                <li>Experience</li>
-                <li>Projects</li>
+                <li className='flex items-center gap-2'>
+                  <div className='border-white-color w-16 border-t'></div>
+                  <span className='font-mono text-white-color tracking-wider'>
+                    About
+                  </span>
+                </li>
+                <li className='flex items-center gap-2'>
+                  <div className='border-neutral-color w-8 border-t'></div>
+                  <span className='font-mono text-neutral-color tracking-wider'>
+                    Experience
+                  </span>
+                </li>
+                <li className='flex items-center gap-2'>
+                  <div className='border-neutral-color w-8 border-t'></div>
+                  <span className='font-mono text-neutral-color tracking-wider'>
+                    Projects
+                  </span>
+                </li>
               </ul>
             </div>
             <div>
