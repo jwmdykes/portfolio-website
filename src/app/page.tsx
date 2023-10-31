@@ -1,13 +1,47 @@
+"use client"
+
 import Link from 'next/link';
 import ExperienceCard from './ExperienceCard';
 import ProjectCard from './ProjectCard';
 import BackgroundOvals from './BackgroundOvals';
+import NavigationElement from './NavigationElement';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { useState, useEffect, useRef, useCallback} from 'react';
+import { act } from 'react-dom/test-utils';
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState('about');
+  const aboutRef = useRef<HTMLDivElement | null>(null);
+  const experienceRef = useRef<HTMLDivElement | null>(null);
+  const projectsRef = useRef<HTMLDivElement | null>(null);
+
+  const handleScroll = useCallback(() => {
+    if (aboutRef.current && experienceRef.current && projectsRef.current) {
+      const about = aboutRef.current.offsetTop;
+      const experience = experienceRef.current.offsetTop;
+      const projects = projectsRef.current.offsetTop;
+
+      if (window.scrollY >= projects) {
+        setActiveSection('projects');
+      } else if (window.scrollY >= experience) {
+        setActiveSection('experience');
+      } else if (window.scrollY >= about) {
+        setActiveSection('about');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+       window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   return (
     <div className='relative bg-background-color min-h-screen flex flex-row justify-center px-20'>
       <BackgroundOvals></BackgroundOvals>
@@ -22,24 +56,21 @@ export default function Home() {
             </div>
             <div>
               <ul className='flex flex-col gap-4'>
-                <li className='flex items-center gap-2'>
-                  <div className='border-white-color w-16 border-t'></div>
-                  <span className='font-mono text-white-color tracking-wider'>
-                    About
-                  </span>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <div className='border-neutral-color w-8 border-t'></div>
-                  <span className='font-mono text-neutral-color tracking-wider'>
-                    Experience
-                  </span>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <div className='border-neutral-color w-8 border-t'></div>
-                  <span className='font-mono text-neutral-color tracking-wider'>
-                    Projects
-                  </span>
-                </li>
+                <NavigationElement
+                  focused={activeSection == 'about'}
+                  href='#about'
+                  text='About'
+                ></NavigationElement>
+                <NavigationElement
+                  focused={activeSection == 'experience'}
+                  href='#experience'
+                  text='Experience'
+                ></NavigationElement>
+                <NavigationElement
+                  focused={activeSection == 'projects'}
+                  href='#projects'
+                  text='Projects'
+                ></NavigationElement>
               </ul>
             </div>
             <div>
@@ -85,8 +116,8 @@ export default function Home() {
             </div>
           </div>
           {/* Scrollable column */}
-          <div className='relative flex flex-col ml-auto w-1/2 py-24'>
-            <section>
+          <div className='relative flex flex-col ml-auto w-1/2'>
+            <section className='pt-24' id='about' ref={aboutRef}>
               <h3>About Me</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit
@@ -107,7 +138,7 @@ export default function Home() {
                 <em>tempor</em>.
               </p>
             </section>
-            <section>
+            <section className='pt-24' id='experience' ref={experienceRef}>
               <h3>My Experience</h3>
               <div className='flex flex-col gap-20'>
                 <ExperienceCard
@@ -139,7 +170,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section>
+            <section className='pt-24' id='projects' ref={projectsRef}>
               <h3>Projects</h3>
               <div className='flex flex-col gap-20'>
                 <ProjectCard
@@ -172,7 +203,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <p className='p-0'>
+            <p className='py-24'>
               Designed in <em>Figma</em>, coded in <em>Visual Studio Code</em>{' '}
               using <em>Next.js</em> and <em>Tailwind CSS</em>. Deployed with{' '}
               <em>Google Cloud</em>.
