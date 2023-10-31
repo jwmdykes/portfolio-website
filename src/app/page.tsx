@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Link from 'next/link';
 import ExperienceCard from './ExperienceCard';
@@ -9,36 +9,132 @@ import NavigationElement from './NavigationElement';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { useState, useEffect, useRef, useCallback} from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
+
   const aboutRef = useRef<HTMLDivElement | null>(null);
   const experienceRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
+  const activeSectionUpdatedRef = useRef(activeSection);
+  const disconnecting = useRef(false);
 
-  const handleScroll = useCallback(() => {
-    if (aboutRef.current && experienceRef.current && projectsRef.current) {
-      const about = aboutRef.current.offsetTop;
-      const experience = experienceRef.current.offsetTop;
-      const projects = projectsRef.current.offsetTop;
+  const handleNavClick = (section: string) => {
+    // Set the active section immediately.
+    setActiveSection(section);
 
-      if (window.scrollY >= projects) {
-        setActiveSection('projects');
-      } else if (window.scrollY >= experience) {
-        setActiveSection('experience');
-      } else if (window.scrollY >= about) {
-        setActiveSection('about');
-      }
-    }
-  }, []);
+    // Temporarily disable processing in the observer's callback.
+    disconnecting.current = true;
+
+    // Reset the flag after a delay.
+    setTimeout(() => {
+      disconnecting.current = false;
+    }, 300); // Adjust this delay as needed.
+  };
+
+  function sectionPositionInViewport(
+    element: HTMLElement | null
+  ): 'above' | 'below' | 'in' | 'invalid' {
+    if (!element) return 'invalid';
+
+    const rect = element.getBoundingClientRect();
+    const elementMidpoint = rect.top + rect.height / 2;
+
+    if (elementMidpoint < window.innerHeight / 2) return 'above';
+    if (elementMidpoint > window.innerHeight / 2) return 'below';
+
+    return 'in';
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const sections = {
+      about: aboutRef,
+      experience: experienceRef,
+      projects: projectsRef,
+    };
+    const sectionOrder = ['about', 'experience', 'projects'];
+
+    const getPreviousSection = (currentSection: string): string | null => {
+      const index = sectionOrder.indexOf(currentSection);
+      if (index > 0) {
+        return sectionOrder[index - 1];
+      }
+      return null; // if there's no previous section
+    };
+
+    const getNextSection = (currentSection: string): string | null => {
+      const index = sectionOrder.indexOf(currentSection);
+      if (index < sectionOrder.length - 1) {
+        return sectionOrder[index + 1];
+      }
+      return null; // if there's no next section
+    };
+
+    const options = {
+      root: null,
+      threshold: 0.7,
+      rootMargin: '0px',
+    };
+
+    const callbackFunction = (entries: any) => {
+      if (disconnecting.current) return;
+
+      entries.forEach((entry: any) => {
+        console.log(`considering entry: ${entry.target.id}`);
+        console.log(
+          `active section updated is: ${activeSectionUpdatedRef.current}`
+        );
+        if (entry.isIntersecting) {
+          activeSectionUpdatedRef.current = entry.target.id;
+          setActiveSection(entry.target.id);
+        } else if (entry.target.id === activeSectionUpdatedRef.current) {
+          // Using type assertion here:
+          if (
+            sectionPositionInViewport(
+              sections[entry.target.id as keyof typeof sections].current
+            ) === 'above'
+          ) {
+            // Change to next section
+            console.log('entry has gone out above the viewport');
+
+            const nextSection = getNextSection(activeSectionUpdatedRef.current);
+            console.log(`next section: ${nextSection}`);
+            if (nextSection) {
+              setActiveSection(nextSection);
+              activeSectionUpdatedRef.current = nextSection;
+            }
+          } else {
+            // Change to previous section
+            console.log('entry has gone out below the viewport');
+            const previousSection = getPreviousSection(
+              activeSectionUpdatedRef.current
+            );
+            console.log(`previous section: ${previousSection}`);
+            if (previousSection) {
+              setActiveSection(previousSection);
+              activeSectionUpdatedRef.current = previousSection;
+            }
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callbackFunction, options);
+
+    Object.values(sections).forEach(
+      (sectionRef: React.RefObject<HTMLDivElement>) => {
+        if (sectionRef.current) observer.observe(sectionRef.current);
+      }
+    );
 
     return () => {
-       window.removeEventListener('scroll', handleScroll);
-    }
+      Object.values(sections).forEach(
+        (sectionRef: React.RefObject<HTMLDivElement>) => {
+          if (sectionRef.current) observer.unobserve(sectionRef.current);
+        }
+      );
+    };
   }, []);
 
   return (
@@ -59,16 +155,19 @@ export default function Home() {
                   focused={activeSection == 'about'}
                   href='#about'
                   text='About'
+                  onClick={handleNavClick}
                 ></NavigationElement>
                 <NavigationElement
                   focused={activeSection == 'experience'}
                   href='#experience'
                   text='Experience'
+                  onClick={handleNavClick}
                 ></NavigationElement>
                 <NavigationElement
                   focused={activeSection == 'projects'}
                   href='#projects'
                   text='Projects'
+                  onClick={handleNavClick}
                 ></NavigationElement>
               </ul>
             </div>
@@ -137,7 +236,11 @@ export default function Home() {
                 <em>tempor</em>.
               </p>
             </section>
-            <section className='pt-24' id='experience' ref={experienceRef}>
+            <section
+              className='pt-24'
+              id='experience'
+              ref={experienceRef}
+            >
               <h3>My Experience</h3>
               <div className='flex flex-col gap-20'>
                 <ExperienceCard
@@ -169,7 +272,11 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className='pt-24' id='projects' ref={projectsRef}>
+            <section
+              className='pt-24'
+              id='projects'
+              ref={projectsRef}
+            >
               <h3>Projects</h3>
               <div className='flex flex-col gap-20'>
                 <ProjectCard
