@@ -3,11 +3,16 @@ import ExperienceCard from './ExperienceCard';
 
 export default function Home() {
   return (
-    <div className='bg-background-color min-h-screen flex flex-row justify-center px-16'>
+    <div className='relative bg-background-color min-h-screen flex flex-row justify-center px-20'>
+      <div className='fixed rotate-45 -left-24 top-3/4 rounded-full w-1/3 h-72 bg-[#0e2d42a8] blur-[128px]'></div>
+      <div className='fixed rotate-[312deg] left-1/3 top-96 rounded-full w-1/5 h-3/5 bg-[#1d42517c] blur-[512px]'></div>
+      <div className='fixed top-1/4 -right-1/4 rounded-full w-2/5 h-1/3 bg-[#00475f] blur-[512px]'></div>
       <div className='container'>
         <div className='flex flex-row text-body-text-color justify-between gap-4'>
           {/* Fixed column */}
           <div className='flex flex-col justify-between gap-4 max-h-screen w-1/2 py-24 top-0 sticky'>
+            <div className='absolute -top-10 -left-1/2 rounded-full w-full h-2/5 bg-[#002A48] blur-3xl -z-10'></div>
+
             <div className='flex flex-col space-y-2'>
               <h1>John Dykes</h1>
               <h2>Programmer and Mathematician</h2>
@@ -28,7 +33,7 @@ export default function Home() {
             </div>
           </div>
           {/* Scrollable column */}
-          <div className='flex flex-col ml-auto w-1/2 py-24'>
+          <div className='relative flex flex-col ml-auto w-1/2 py-24'>
             <section>
               <h3>About Me</h3>
               <p>

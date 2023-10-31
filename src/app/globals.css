@@ -19,7 +19,7 @@
     @apply text-body-highlight-color not-italic;
   }
   section {
-    @apply pb-16;
+    @apply pb-32;
   }
 }
 
