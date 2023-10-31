@@ -2,7 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    height: 100%;
-    margin: 0;
+@layer components {
+  h1 {
+    @apply text-5xl font-bold font-mono text-highlight-color tracking-wide;
+  }
+  h2 {
+    @apply text-xl font-mono text-white-color;
+  }
+  h3 {
+    @apply text-xl font-medium tracking-h3 font-mono pb-10 text-secondary-highlight-color;
+  }
+  p {
+    @apply text-base leading-relaxed text-body-text-color pb-5;
+  }
+  em {
+    @apply text-body-highlight-color not-italic;
+  }
+  section {
+    @apply pb-16;
+  }
+}
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #001c30;
+  --body-text-color: hsla(174, 100%, 93%, 0.6);
+  --highlight-color: #64ccc5;
+  --body-highlight-color: #0cfeee;
+  --white-color: #dafffb;
+  --secondary-highlight-color: #279bc1;
+  --neutral-color: #7399A6;
+  --skillsButtonFillColor: #002E4F;
+  --skillsButtonTextColor: #64CCC5;
 }

@@ -8,15 +8,28 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-source-code-pro)'],
       },
-    },
+      colors: {
+        "background-color": "var(--background-color)",
+        "body-text-color": "var(--body-text-color)",
+        "highlight-color": "var(--highlight-color)",
+        "white-color": "var(--white-color)",
+        "secondary-highlight-color": "var(--secondary-highlight-color)",
+        "body-highlight-color": "var(--body-highlight-color)",
+        "neutral-color": "var(--neutral-color)",
+        "skillsButtonFillColor": "var(--skillsButtonFillColor)",
+        "skillsButtonTextColor": "var(--skillsButtonTextColor)",
+      },
+      letterSpacing: {
+        h3: '0.20em'
+      }
+    }
   },
   plugins: [
-    require("daisyui")
+    require('@tailwindcss/typography'),
   ],
 }
 export default config
