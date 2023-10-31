@@ -27,6 +27,7 @@ html {
   margin: 0px;
   height: 100%;
   width: 100%;
+  scrollbar-color: #4b646d #00121f8f;
 }
 
 body {

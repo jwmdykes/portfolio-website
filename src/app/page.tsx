@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import ExperienceCard from './ExperienceCard';
 import ProjectCard from './ProjectCard';
+import BackgroundOvals from './BackgroundOvals';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 export default function Home() {
   return (
     <div className='relative bg-background-color min-h-screen flex flex-row justify-center px-20'>
-      <div className='fixed rotate-45 -left-24 top-3/4 rounded-full w-1/3 h-72 bg-[#0e2d42a8] blur-[128px]'></div>
-      <div className='fixed rotate-[312deg] left-1/3 top-96 rounded-full w-1/5 h-3/5 bg-[#1d42517c] blur-[512px]'></div>
-      <div className='fixed top-1/4 -right-1/4 rounded-full w-2/5 h-1/3 bg-[#00475f] blur-[512px]'></div>
-      <div className='fixed -top-1/4 -left-24 rounded-full w-1/2 h-3/5 bg-[#002A48] blur-3xl'></div>
+      <BackgroundOvals></BackgroundOvals>
 
       <div className='container'>
         <div className='flex flex-row text-body-text-color justify-between gap-4'>
@@ -27,9 +29,43 @@ export default function Home() {
             </div>
             <div>
               <ul className='flex flex-row gap-5'>
-                <li>Github</li>
-                <li>LinkedIn</li>
-                <li>Email</li>
+                <li className='hover:text-highlight-color'>
+                  <a
+                    href='https://github.com/jwmdykes'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label='GitHub'
+                  >
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      width={24}
+                      aria-hidden='true'
+                    />
+                  </a>
+                </li>
+                <li className='hover:text-highlight-color'>
+                  <a
+                    href='https://linkedin.com/in/your_username'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label='LinkedIn'
+                  >
+                    <FontAwesomeIcon
+                      icon={faLinkedin}
+                      width={24}
+                      aria-hidden='true'
+                    />
+                  </a>
+                </li>
+                <li className='hover:text-highlight-color'>
+                  <a href='mailto:98johndykes@gmail.com' aria-label='Email'>
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      width={24}
+                      aria-hidden='true'
+                    />
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -79,6 +115,14 @@ export default function Home() {
                   description='Worked on a team applying machine learning and Geocomputation to telecommunications data, including estimating the interference that cellular towers have on each other.'
                 ></ExperienceCard>
               </div>
+              <div className='mt-16 flex justify-end'>
+                <div className='flex gap-2 hover:cursor-pointer items-end'>
+                  <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
+                    View Full Resume
+                  </span>
+                  <FontAwesomeIcon icon={faArrowRight} width={18} />
+                </div>
+              </div>
             </section>
             <section>
               <h3>Projects</h3>
@@ -104,7 +148,20 @@ export default function Home() {
                   ]}
                 ></ProjectCard>
               </div>
+              <div className='mt-16 flex justify-end'>
+                <div className='flex gap-2 hover:cursor-pointer items-end'>
+                  <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
+                    View All Projects
+                  </span>
+                  <FontAwesomeIcon icon={faArrowRight} width={18} />
+                </div>
+              </div>
             </section>
+            <p className='p-0'>
+              Designed in <em>Figma</em>, coded in <em>Visual Studio Code</em>{' '}
+              using <em>Next.js</em> and <em>Tailwind CSS</em>. Deployed with{' '}
+              <em>Google Cloud</em>.
+            </p>
           </div>
         </div>
       </div>
