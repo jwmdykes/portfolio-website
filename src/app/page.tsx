@@ -81,10 +81,6 @@ export default function Home() {
       if (disconnecting.current) return;
 
       entries.forEach((entry: any) => {
-        console.log(`considering entry: ${entry.target.id}`);
-        console.log(
-          `active section updated is: ${activeSectionUpdatedRef.current}`
-        );
         if (entry.isIntersecting) {
           activeSectionUpdatedRef.current = entry.target.id;
           setActiveSection(entry.target.id);
@@ -95,22 +91,15 @@ export default function Home() {
               sections[entry.target.id as keyof typeof sections].current
             ) === 'above'
           ) {
-            // Change to next section
-            console.log('entry has gone out above the viewport');
-
             const nextSection = getNextSection(activeSectionUpdatedRef.current);
-            console.log(`next section: ${nextSection}`);
             if (nextSection) {
               setActiveSection(nextSection);
               activeSectionUpdatedRef.current = nextSection;
             }
           } else {
-            // Change to previous section
-            console.log('entry has gone out below the viewport');
             const previousSection = getPreviousSection(
               activeSectionUpdatedRef.current
             );
-            console.log(`previous section: ${previousSection}`);
             if (previousSection) {
               setActiveSection(previousSection);
               activeSectionUpdatedRef.current = previousSection;
