@@ -15,6 +15,9 @@ const config: Config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'bottom-blur': 'linear-gradient(to top, rgba(255, 255, 255, 0.37) 0%, transparent 100%)',
+      },
       fontFamily: {
         sans: ['var(--font-inter)'],
         mono: ['var(--font-source-code-pro)'],

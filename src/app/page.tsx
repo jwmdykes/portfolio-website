@@ -5,6 +5,7 @@ import ExperienceCard from './ExperienceCard';
 import ProjectCard from './ProjectCard';
 import BackgroundOvals from './BackgroundOvals';
 import NavigationElement from './NavigationElement';
+import MobileOvals from './MobileOvals';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -127,8 +128,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:py-0 md:px-20'>
-      <BackgroundOvals></BackgroundOvals>
+    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:py-0 md:px-20 overflow-x-hidden'>
+      <div className='hidden md:block'>
+        <BackgroundOvals></BackgroundOvals>
+      </div>
+      <div className='block md:hidden'>
+        <MobileOvals></MobileOvals>
+      </div>
 
       <div className='container'>
         <div className='flex flex-col md:flex-row text-body-text-color justify-between gap-4'>
