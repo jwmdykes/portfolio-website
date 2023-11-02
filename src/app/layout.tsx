@@ -3,8 +3,11 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Source_Code_Pro } from 'next/font/google';
 
-const inter = Inter({subsets: ['latin'], variable: '--font-inter'})
-const source_code_pro = Source_Code_Pro({ subsets: ['latin'], variable: '--font-source-code-pro' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const source_code_pro = Source_Code_Pro({
+  subsets: ['latin'],
+  variable: '--font-source-code-pro',
+});
 
 export const metadata = {
   title: 'Next.js',
@@ -19,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${inter.variable} ${source_code_pro.variable}`}>
       <body>
-        {children}
+        <div className='overflow-clip'>{children}</div>
       </body>
     </html>
   );
