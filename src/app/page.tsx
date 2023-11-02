@@ -184,7 +184,7 @@ export default function Home() {
                 </li>
                 <li className='hover:text-highlight-color'>
                   <a
-                    href='https://linkedin.com/in/your_username'
+                    href='https://www.linkedin.com/in/john-dykes-136a9385/'
                     target='_blank'
                     rel='noopener noreferrer'
                     aria-label='LinkedIn'
@@ -238,15 +238,7 @@ export default function Home() {
               </p>
               <p>
                 When I'm not doing math or programming, you may find me playing
-                the{' '}
-                <Link href={'/piano'}>
-                  <em>piano</em>
-                </Link>
-                , or studying{' '}
-                <Link href={'/korean'}>
-                  <em>Korean</em>
-                </Link>
-                !
+                the piano, or studying Korean!
               </p>
             </section>
             <section className='pt-24' id='experience' ref={experienceRef}>
@@ -343,7 +335,10 @@ export default function Home() {
                 ></ProjectCard>
               </div>
               <div className='mt-16 flex justify-end'>
-                <ArrowLink href='#' text='View All Projects'></ArrowLink>
+                <ArrowLink
+                  href='https://medium.com/@98johndykes'
+                  text='View All Projects'
+                ></ArrowLink>
               </div>
             </section>
             <p className='pt-24 md:py-24 text-dark-neutral-color'>
