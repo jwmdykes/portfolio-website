@@ -36,6 +36,11 @@ body {
   width: 100%;
 }
 
+::selection {
+  background: var(--highlight-color);
+  color: var(--background-color);
+}
+
 * {
   box-sizing: border-box;
 }

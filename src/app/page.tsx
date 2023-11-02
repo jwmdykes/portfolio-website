@@ -225,11 +225,7 @@ export default function Home() {
                 <em>tempor</em>.
               </p>
             </section>
-            <section
-              className='pt-24'
-              id='experience'
-              ref={experienceRef}
-            >
+            <section className='pt-24' id='experience' ref={experienceRef}>
               <h3>My Experience</h3>
               <div className='flex flex-col gap-20'>
                 <ExperienceCard
@@ -253,19 +249,17 @@ export default function Home() {
                 ></ExperienceCard>
               </div>
               <div className='mt-16 flex justify-end'>
-                <div className='flex gap-2 hover:cursor-pointer items-end'>
-                  <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
-                    View Full Resume
-                  </span>
-                  <FontAwesomeIcon icon={faArrowRight} width={18} />
-                </div>
+                <Link href={'/resume.pdf'}>
+                  <div className='flex gap-2 hover:cursor-pointer items-end'>
+                    <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
+                      View Full Resume
+                    </span>
+                    <FontAwesomeIcon icon={faArrowRight} width={18} />
+                  </div>
+                </Link>
               </div>
             </section>
-            <section
-              className='pt-24'
-              id='projects'
-              ref={projectsRef}
-            >
+            <section className='pt-24' id='projects' ref={projectsRef}>
               <h3>Projects</h3>
               <div className='flex flex-col gap-20'>
                 <ProjectCard
