@@ -28,6 +28,7 @@ const config: Config = {
         'highlight-color': 'var(--highlight-color)',
         'white-color': 'var(--white-color)',
         'dark-white-color': 'var(--dark-white-color)',
+        'darker-white-color': 'var(--darker-white-color)',
         'secondary-highlight-color': 'var(--secondary-highlight-color)',
         'body-highlight-color': 'var(--body-highlight-color)',
         'neutral-color': 'var(--neutral-color)',

@@ -6,20 +6,22 @@ import ProjectCard from './ProjectCard';
 import BackgroundOvals from './BackgroundOvals';
 import NavigationElement from './NavigationElement';
 import MobileOvals from './MobileOvals';
+import ArrowLink from './ArrowLink';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('about');
+  const activeSectionUpdatedRef = useRef(activeSection);
+  activeSectionUpdatedRef.current = activeSection;
+  const disconnecting = useRef(false);
 
   const aboutRef = useRef<HTMLDivElement | null>(null);
   const experienceRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
-  const activeSectionUpdatedRef = useRef(activeSection);
-  const disconnecting = useRef(false);
 
   const handleNavClick = (section: string) => {
     // Set the active section immediately.
@@ -83,7 +85,6 @@ export default function Home() {
 
       entries.forEach((entry: any) => {
         if (entry.isIntersecting) {
-          activeSectionUpdatedRef.current = entry.target.id;
           setActiveSection(entry.target.id);
         } else if (entry.target.id === activeSectionUpdatedRef.current) {
           // Using type assertion here:
@@ -95,7 +96,6 @@ export default function Home() {
             const nextSection = getNextSection(activeSectionUpdatedRef.current);
             if (nextSection) {
               setActiveSection(nextSection);
-              activeSectionUpdatedRef.current = nextSection;
             }
           } else {
             const previousSection = getPreviousSection(
@@ -103,7 +103,6 @@ export default function Home() {
             );
             if (previousSection) {
               setActiveSection(previousSection);
-              activeSectionUpdatedRef.current = previousSection;
             }
           }
         }
@@ -114,6 +113,7 @@ export default function Home() {
 
     Object.values(sections).forEach(
       (sectionRef: React.RefObject<HTMLDivElement>) => {
+        console.log(sectionRef.current)
         if (sectionRef.current) observer.observe(sectionRef.current);
       }
     );
@@ -235,6 +235,7 @@ export default function Home() {
               <h3>My Experience</h3>
               <div className='flex flex-col gap-20'>
                 <ExperienceCard
+                  href='https://www.cyber.gc.ca/en'
                   skills={['Cryptography', 'Python', 'Mathematics', 'C/C++']}
                   company='Canadian Centre for Cyber Security'
                   date='2020 — Present'
@@ -242,6 +243,7 @@ export default function Home() {
                   description='Researching and implementing cryptographic algorithms in order to ensure cryptographic primitives used to protect Government of Canada communications continue to be effective in light of anticipated quantum computing advancements.'
                 ></ExperienceCard>
                 <ExperienceCard
+                  href='https://ised-isde.canada.ca/site/communications-research-centre-canada/en'
                   skills={[
                     'Geocomputation',
                     'Python',
@@ -255,6 +257,7 @@ export default function Home() {
                   description='Worked on a team applying machine learning and Geocomputation to telecommunications data, including estimating the interference that cellular towers have on each other.'
                 ></ExperienceCard>
                 <ExperienceCard
+                  href='https://uwaterloo.ca/pure-mathematics/'
                   company='University of Waterloo'
                   title='Master of Mathematics'
                   date='Jan — Dec 2018'
@@ -267,22 +270,19 @@ export default function Home() {
                   ]}
                 ></ExperienceCard>
                 <ExperienceCard
+                  href='https://carleton.ca/math/'
                   company='Carleton University'
                   date='2014 — 2017'
-                  title='Bachelore of Mathematics, Honours'
-                  description="After taking two courses at Carleton University during the summer while being homeschooled and receiving A+s in both, I was accepted into the math program in the fall of 2018. I graduated with high distinction in December 2017. I made use of my Python programming skills during a Dean Summer Research Internship (DSRI) scholarship with Dr. Yuly Billig and during my Honour's project with Dr. Brett Stevens."
+                  title='Bachelor of Mathematics, Honours'
+                  description="After taking two courses at Carleton University during the summer while being homeschooled and receiving A+s in both, I was accepted into the math program in the fall of 2014. I graduated with high distinction in December 2017. I made use of my Python programming skills during a Dean Summer Research Internship (DSRI) scholarship with Dr. Yuly Billig and during my Honour's project with Dr. Brett Stevens."
                   skills={['Mathematics', 'MATLAB', 'Python']}
                 ></ExperienceCard>
               </div>
               <div className='mt-16 flex justify-end'>
-                <Link href={'/resume.pdf'}>
-                  <div className='flex gap-2 hover:cursor-pointer items-end'>
-                    <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
-                      View Full Resume
-                    </span>
-                    <FontAwesomeIcon icon={faArrowRight} width={18} />
-                  </div>
-                </Link>
+                <ArrowLink
+                  href='/resume.pdf'
+                  text='View Full Resume'
+                ></ArrowLink>
               </div>
             </section>
             <section className='pt-24' id='projects' ref={projectsRef}>
@@ -325,12 +325,10 @@ export default function Home() {
                 ></ProjectCard>
               </div>
               <div className='mt-16 flex justify-end'>
-                <div className='flex gap-2 hover:cursor-pointer items-end'>
-                  <span className='whitespace-nowrap text-base font-mono tracking-wide text-white-color'>
-                    View All Projects
-                  </span>
-                  <FontAwesomeIcon icon={faArrowRight} width={18} />
-                </div>
+                <ArrowLink
+                  href='#'
+                  text='View All Projects'
+                ></ArrowLink>
               </div>
             </section>
             <p className='pt-24 md:py-24 text-dark-neutral-color'>
