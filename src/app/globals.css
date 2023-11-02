@@ -16,7 +16,7 @@
     @apply text-base leading-relaxed text-body-text-color;
   }
   em {
-    @apply text-body-highlight-color not-italic;
+    @apply text-dark-white-color hover:text-body-highlight-color not-italic;
   }
 }
 
@@ -51,8 +51,10 @@ body {
   --highlight-color: #64ccc5;
   --body-highlight-color: #0cfeee;
   --white-color: #dafffb;
+  --dark-white-color: #dafffb96;
   --secondary-highlight-color: #279bc1;
   --neutral-color: #7399A6;
+  --dark-neutral-color: #5c7b85;
   --skillsButtonFillColor: #002E4F;
   --skillsButtonTextColor: #64CCC5;
 }

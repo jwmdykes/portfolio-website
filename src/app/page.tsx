@@ -298,10 +298,28 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <p className='pt-24 md:py-24'>
-              Designed in <em>Figma</em>, coded in <em>Visual Studio Code</em>{' '}
-              using <em>Next.js</em> and <em>Tailwind CSS</em>. Deployed with{' '}
-              <em>Google Cloud</em>.
+            <p className='pt-24 md:py-24 text-dark-neutral-color'>
+              Designed in{' '}
+              <Link href='https://www.figma.com/'>
+                <em>Figma</em>
+              </Link>
+              , coded in{' '}
+              <Link href='https://code.visualstudio.com/'>
+                <em>Visual Studio Code</em>
+              </Link>{' '}
+              using{' '}
+              <Link href='https://nextjs.org/'>
+                <em>Next.js</em>
+              </Link>{' '}
+              and{' '}
+              <Link href='https://tailwindcss.com/'>
+                <em>Tailwind CSS</em>
+              </Link>
+              . Deployed with{' '}
+              <Link href='https://cloud.google.com/'>
+                <em>Google Cloud</em>
+              </Link>
+              .
             </p>
           </div>
         </div>
