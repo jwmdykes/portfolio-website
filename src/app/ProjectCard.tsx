@@ -22,15 +22,6 @@ export default function ProjectCard(props: ProjectCardProps) {
             style={{ objectFit: 'contain', objectPosition: 'left top' }}
           ></Image>
         </div>
-
-        {/* <div className='relative text-neutral-color flex md:min-w-[142px]'>
-          <Image
-            src={props.thumbnail}
-            alt={props.alt}
-            fill
-            style={{ objectFit: 'contain', objectPosition: 'top' }}
-          ></Image>
-        </div> */}
         <div className='flex flex-col gap-4'>
           <div className='flex flex-col'>
             <span className='font-sans text-highlight-color font-semibold text-xl'>
@@ -40,7 +31,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           <p className='text-sm'>{props.description}</p>
         </div>
       </div>
-      <div className='flex gap-4 flex-wrap'>
+      <div className='flex gap-x-2 gap-y-2 flex-wrap'>
         {props.skills.map((skill, index) => (
           <SkillsButton key={index} skill={skill}></SkillsButton>
         ))}

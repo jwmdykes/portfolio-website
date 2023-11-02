@@ -212,13 +212,13 @@ export default function Home() {
           <div className='relative flex flex-col md:ml-auto md:w-1/2'>
             <section className='pt-24' id='about' ref={aboutRef}>
               <h3>About Me</h3>
-              <p>
+              <p className='pb-5'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit
                 lectus, scelerisque eu tempus tristique, suscipit nec tellus.
                 Aliquam ut <em>pulvinar ligula</em>. Sed rutrum urna in arcu
                 lacinia, at ultrices quam pellentesque. Proin id rhoncus lectus.
               </p>
-              <p>
+              <p className='pb-5'>
                 Pellentesque habitant morbi tristique senectus et netus et
                 malesuada fames ac turpis <em>egestas</em>. Mauris tincidunt
                 lobortis varius. Etiam sed volutpat purus. Curabitur consectetur
