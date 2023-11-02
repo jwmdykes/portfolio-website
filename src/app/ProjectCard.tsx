@@ -12,7 +12,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard(props: ProjectCardProps) {
   return (
-    <div className='hover:before:border-t hover:before:border-[#ffffff2c] hover:before:backdrop-blur-3xl hover:before:drop-shadow-2xl hover:before:stroke hover:before:bg-gradient-to-br hover:before:from-[#ffffff1a] hover:before:to-transparent before:rounded-md before:absolute before:-z-10 before:-top-5 before:-bottom-5 before:-right-8 before:-left-8 relative z-10 flex flex-col gap-4'>
+    <div className='md:hover:before:border-t md:hover:before:border-[#ffffff2c] md:hover:before:backdrop-blur-3xl md:hover:before:drop-shadow-2xl md:hover:before:stroke md:hover:before:bg-gradient-to-br md:hover:before:from-[#ffffff1a] md:hover:before:to-transparent before:rounded-md before:absolute before:-z-10 before:-top-5 before:-bottom-5 before:-right-8 before:-left-8 relative z-10 flex flex-col gap-4'>
       <div className='flex flex-row gap-8'>
         <div className='relative text-neutral-color flex min-w-[142px]'>
             <Image src={props.thumbnail} alt={props.alt} layout='fill' objectFit='contain' objectPosition='top'></Image>

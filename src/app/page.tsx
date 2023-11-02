@@ -298,7 +298,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <p className='py-24'>
+            <p className='pt-24 md:py-24'>
               Designed in <em>Figma</em>, coded in <em>Visual Studio Code</em>{' '}
               using <em>Next.js</em> and <em>Tailwind CSS</em>. Deployed with{' '}
               <em>Google Cloud</em>.
