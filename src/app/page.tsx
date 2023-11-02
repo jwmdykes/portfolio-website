@@ -76,8 +76,8 @@ export default function Home() {
 
     const options = {
       root: null,
-      threshold: 0.7,
-      rootMargin: '0px',
+      threshold: 0,
+      rootMargin: "0px 0px -80% 0px",
     };
 
     const callbackFunction = (entries: any) => {
@@ -213,22 +213,40 @@ export default function Home() {
             <section className='pt-24' id='about' ref={aboutRef}>
               <h3>About Me</h3>
               <p className='pb-5'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elit
-                lectus, scelerisque eu tempus tristique, suscipit nec tellus.
-                Aliquam ut <em>pulvinar ligula</em>. Sed rutrum urna in arcu
-                lacinia, at ultrices quam pellentesque. Proin id rhoncus lectus.
+                I've had an interest in mathematics and programming for almost
+                as long as I can remember. I first got into programming as a kid
+                tinkering around making games in Pygame, and haven't looked back
+                since.
               </p>
               <p className='pb-5'>
-                Pellentesque habitant morbi tristique senectus et netus et
-                malesuada fames ac turpis <em>egestas</em>. Mauris tincidunt
-                lobortis varius. Etiam sed volutpat purus. Curabitur consectetur
-                metus in lobortis consectetur. <em>Curabitur</em> ut nisi
-                consectetur, <em>tempus</em> dui at, bibendum arcu.
+                Outside of{' '}
+                <a href={'https://www.cyber.gc.ca/en'}>
+                  <em>my job</em>
+                </a>{' '}
+                as a cryptographic researcher, I spend most of my time
+                programming making{' '}
+                <Link href={'/projects'}>
+                  <em>web apps</em>
+                </Link>
+                . Some of the web technologies I've worked the most are React,
+                TailwindCSS, Next.js. On the more mathematical and machine
+                learning side of things, I have used a lot of Python (sometimes{' '}
+                <Link href={'https://www.sagemath.org/'}>
+                  <em>SageMath</em>
+                </Link>
+                ), Mathematica, and R.
               </p>
               <p>
-                Ut nec ipsum ac quam volutpat vehicula nec ac felis. Mauris
-                scelerisque orci sit amet nisi lobortis, quis tempor tellus{' '}
-                <em>tempor</em>.
+                When I'm not doing math or programming, you may find me playing
+                the{' '}
+                <Link href={'/piano'}>
+                  <em>piano</em>
+                </Link>
+                , or studying{' '}
+                <Link href={'/korean'}>
+                  <em>Korean</em>
+                </Link>
+                !
               </p>
             </section>
             <section className='pt-24' id='experience' ref={experienceRef}>
@@ -266,7 +284,7 @@ export default function Home() {
                     'Mathematics',
                     'Number Theory',
                     'Mathematica',
-                    'Pathon/SageMath',
+                    'Python/SageMath',
                   ]}
                 ></ExperienceCard>
                 <ExperienceCard
@@ -325,32 +343,29 @@ export default function Home() {
                 ></ProjectCard>
               </div>
               <div className='mt-16 flex justify-end'>
-                <ArrowLink
-                  href='#'
-                  text='View All Projects'
-                ></ArrowLink>
+                <ArrowLink href='#' text='View All Projects'></ArrowLink>
               </div>
             </section>
             <p className='pt-24 md:py-24 text-dark-neutral-color'>
               Designed in{' '}
               <Link href='https://www.figma.com/'>
-                <em>Figma</em>
+                <em className='text-dark-white-color'>Figma</em>
               </Link>
               , coded in{' '}
               <Link href='https://code.visualstudio.com/'>
-                <em>Visual Studio Code</em>
+                <em className='text-dark-white-color'>Visual Studio Code</em>
               </Link>{' '}
               using{' '}
               <Link href='https://nextjs.org/'>
-                <em>Next.js</em>
+                <em className='text-dark-white-color'>Next.js</em>
               </Link>{' '}
               and{' '}
               <Link href='https://tailwindcss.com/'>
-                <em>Tailwind CSS</em>
+                <em className='text-dark-white-color'>Tailwind CSS</em>
               </Link>
               . Deployed with{' '}
               <Link href='https://cloud.google.com/'>
-                <em>Google Cloud</em>
+                <em className='text-dark-white-color'>Google Cloud</em>
               </Link>
               .
             </p>
