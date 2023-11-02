@@ -128,7 +128,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:py-0 md:px-20 overflow-x-hidden'>
+    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:py-0 md:px-20'>
       <div className='hidden md:block'>
         <BackgroundOvals></BackgroundOvals>
       </div>
