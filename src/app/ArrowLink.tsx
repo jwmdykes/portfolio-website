@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import AnimatedArrow from './AnimatedArrow';
 
 export default function ArrowLink(props: { href: string; text: string }) {
   return (
@@ -9,7 +8,7 @@ export default function ArrowLink(props: { href: string; text: string }) {
           <span className='whitespace-nowrap font-mono tracking-wide leading-5'>
             {props.text}
           </span>
-          <FontAwesomeIcon icon={faArrowRight} size={'1x'} className='relative top-[1px] left-0 group-hover:translate-x-2 transition-transform duration-200 ease-in-out'/>
+          <AnimatedArrow top={1}></AnimatedArrow> 
         </div>
     </Link>
   );
