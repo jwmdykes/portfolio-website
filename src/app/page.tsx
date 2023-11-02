@@ -127,13 +127,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:px-20 overflow-x-hidden'>
+    <div className='relative bg-background-color min-h-screen flex flex-row justify-center p-4 md:py-0 md:px-20'>
       <BackgroundOvals></BackgroundOvals>
 
       <div className='container'>
         <div className='flex flex-col md:flex-row text-body-text-color justify-between gap-4'>
           {/* Fixed column */}
-          <div className='flex flex-col justify-between gap-12 md:gap-4 md:max-h-screen w-full md:w-1/2 pt-12 md:py-24 z-10 md:top-0 sticky'>
+          <div className='flex flex-col justify-between gap-12 md:gap-4 md:max-h-screen w-full md:w-1/2 pt-12 md:py-24 z-10 md:top-0 md:sticky'>
             <div className='flex flex-col space-y-2'>
               <h1>John Dykes</h1>
               <h2>Programmer and Mathematician</h2>
