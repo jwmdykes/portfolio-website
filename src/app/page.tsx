@@ -288,6 +288,21 @@ export default function Home() {
                     'Python',
                   ]}
                 ></ProjectCard>
+                <ProjectCard
+                  thumbnail='/images/web-synthesizer.png'
+                  title='Building a Synthesizer Using the Web Audio API'
+                  alt='Thumbnail for synthesizer project'
+                  description='Creating a basic subtractive synthesizer using tools provided by the web audio API. Works both with a midi keyboard, or via the provided virtual keyboard. The interface was created using the DaisyUI tailwind component library, and ReactJS.'
+                  skills={[
+                    'Javascript',
+                    'Typescript',
+                    'HTML',
+                    'CSS',
+                    'TailwindCSS',
+                    'React',
+                    'DaisyUI',
+                  ]}
+                ></ProjectCard>
               </div>
               <div className='mt-16 flex justify-end'>
                 <div className='flex gap-2 hover:cursor-pointer items-end'>
