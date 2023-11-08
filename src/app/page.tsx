@@ -213,9 +213,9 @@ export default function Home() {
             <section className='pt-24' id='about' ref={aboutRef}>
               <h3>About Me</h3>
               <p className='pb-5'>
-                I've had an interest in mathematics and programming for almost
+                I&apos;ve had an interest in mathematics and programming for almost
                 as long as I can remember. I first got into programming as a kid
-                tinkering around making games in Pygame, and haven't looked back
+                tinkering around making games in Pygame, and haven&apos;t looked back
                 since.
               </p>
               <p className='pb-5'>
@@ -228,7 +228,7 @@ export default function Home() {
                 <Link href={'/projects'}>
                   <em>web apps</em>
                 </Link>
-                . Some of the web technologies I've worked the most are React,
+                . Some of the web technologies I&apos;ve worked the most are React,
                 TailwindCSS, Next.js. On the more mathematical and machine
                 learning side of things, I have used a lot of Python (sometimes{' '}
                 <Link href={'https://www.sagemath.org/'}>
@@ -237,7 +237,7 @@ export default function Home() {
                 ), Mathematica, and R.
               </p>
               <p>
-                When I'm not doing math or programming, you may find me playing
+                When I&apos;m not doing math or programming, you may find me playing
                 the piano, or studying Korean!
               </p>
             </section>
