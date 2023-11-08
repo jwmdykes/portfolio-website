@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import SkillsButton from './SkillsButton';
 import AnimatedArrow from './AnimatedArrow';
-import Image from 'next/image';
+import Image from './Image';
 
 interface ProjectCardProps {
   thumbnail: string;
