@@ -21,17 +21,19 @@
 }
 
 html {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
   width: 100%;
+  background-color: var(--background-color);
   scrollbar-color: #4b646d #00121f8f;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
   min-height: 100%;
   width: 100%;
  }
