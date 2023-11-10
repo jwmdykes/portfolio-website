@@ -21,6 +21,7 @@ const source_code_pro = Source_Code_Pro({
 export const metadata : Metadata = {
   title: "John's Portfolio",
   description: "John Dykes' Web Development Portfolio Website",
+  publisher: "John Dykes",
 };
 
 export default function RootLayout({
