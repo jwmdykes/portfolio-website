@@ -8,6 +8,7 @@ export function SectionLinks(props: { refs: React.RefObject<HTMLDivElement>[] })
     const activeSectionUpdatedRef = useRef(activeSection);
     activeSectionUpdatedRef.current = activeSection;
     const disconnecting = useRef(false);
+    const timer : React.MutableRefObject<undefined | NodeJS.Timeout> = useRef();
 
     const handleNavClick = (section: string) => {
         // Set the active section immediately.
@@ -17,7 +18,8 @@ export function SectionLinks(props: { refs: React.RefObject<HTMLDivElement>[] })
         disconnecting.current = true;
 
         // Reset the flag after a delay.
-        setTimeout(() => {
+        clearTimeout(timer.current);
+        timer.current = setTimeout(() => {
             disconnecting.current = false;
         }, 300); // Adjust this delay as needed.
     };
