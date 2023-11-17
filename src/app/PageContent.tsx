@@ -17,7 +17,7 @@ export default function PageContent() {
         <>
             {/* Fixed column */}
             <div
-                className='flex flex-col justify-between gap-12 md:gap-4 md:max-h-screen w-full md:w-1/2 pt-12 md:py-24 z-10 md:top-0 md:sticky'>
+                className='flex flex-col justify-between gap-12 md:gap-4 md:max-dh-screen w-full md:w-1/2 pt-12 md:py-24 z-10 md:top-0 md:sticky'>
                 <div className='flex flex-col space-y-2'>
                     <h1>John Dykes</h1>
                     <h2>Programmer and Mathematician</h2>
