@@ -4,15 +4,18 @@ export default function NavigationElement(props: {
   text: string;
   onClick: (section: string) => void;
 }) {
+  // const borderColor = props.focused
+  //   ? 'border-white-color'
+  //   : 'border-neutral-color group-hover:border-white-color';
   const borderColor = props.focused
-    ? 'border-white-color'
-    : 'border-neutral-color group-hover:border-white-color';
+      ? 'border-white-color'
+      : 'border-neutral-color betterhover:group-hover:border-white-color';
 
   const textColor = props.focused
     ? 'text-white-color'
-    : 'text-neutral-color group-hover:text-white-color';
+    : 'text-neutral-color betterhover:group-hover:text-white-color';
 
-  const borderWidth = props.focused ? 'w-16' : 'w-8 group-hover:w-16';
+  const borderWidth = props.focused ? 'w-16' : 'w-8 betterhover:group-hover:w-16';
 
   return (
     <li className='flex w-fit items-center gap-2 transition-all duration-300 group'>

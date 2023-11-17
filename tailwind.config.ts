@@ -11,10 +11,13 @@ const config: Config = {
       screens: {
         sm: '640px',
         md: '768px',
-        lg: '1024px',
+        lg: '1200px',
       },
     },
     extend: {
+      screens: {
+        'betterhover': {'raw': '(hover: hover)'},
+      },
       backgroundImage: {
         'bottom-blur': 'linear-gradient(to top, rgba(255, 255, 255, 0.37) 0%, transparent 100%)',
       },
