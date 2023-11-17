@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
+import {faGithub, faLinkedin, faMedium} from "@fortawesome/free-brands-svg-icons";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
@@ -20,6 +20,21 @@ export default function SocialIcons() {
                     />
                 </a>
             </li>
+            <li className="hover:text-highlight-color">
+                <a
+                    href="https://medium.com/@98johndykes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Medium"
+                >
+                    <FontAwesomeIcon
+                        icon={faMedium}
+                        size="xl"
+                        aria-hidden="true"
+                    />
+                </a>
+            </li>
+
             <li className="hover:text-highlight-color">
                 <a
                     href="https://www.linkedin.com/in/john-dykes-136a9385/"

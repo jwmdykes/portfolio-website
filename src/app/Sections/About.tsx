@@ -18,7 +18,7 @@ export default function About() {
                 </a>{' '}
                 as a cryptographic researcher, I spend most of my time
                 programming making{' '}
-                <Link href={'/projects'}>
+                <Link href={'https://medium.com/@98johndykes'}>
                     <em>web apps</em>
                 </Link>
                 . Some of the web technologies I&apos;ve worked the most are React,
