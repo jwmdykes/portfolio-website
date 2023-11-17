@@ -21,8 +21,8 @@ export default function ClosingRemarks() {
                 <em className='text-dark-white-color'>Tailwind CSS</em>
             </Link>
             . Deployed with{' '}
-            <Link href='https://cloud.google.com/'>
-                <em className='text-dark-white-color'>Google Cloud</em>
+            <Link href='https://www.digitalocean.com/'>
+                <em className='text-dark-white-color'>Digital Ocean</em>
             </Link>
             .
         </p>

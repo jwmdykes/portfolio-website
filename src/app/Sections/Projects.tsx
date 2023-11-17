@@ -7,14 +7,14 @@ export default function Projects() {
         <>
             <h3>Projects</h3>
             <div className='flex flex-col gap-20'>
-                <ProjectCard
+                <ProjectCard href={'https://medium.com/@98johndykes/creating-a-popup-dictionary-with-electron-part-1-7736c5e99670'}
                     thumbnail='/images/electron-popup-dict-github.webp'
                     title='Creating a Popup Dictionary with Electron'
                     description='A popup dictionary created in electron for easy access to a dictionary while reading books, browsing the web or any other task. Since it is built in electron it works in any application, and it is extensible to any language since it is based on online dictionaries.'
                     alt='Thumbnail for Popup Dictionary Project'
                     skills={['Electron', 'Javascript', 'HTML/CSS', 'Python']}
                 ></ProjectCard>
-                <ProjectCard
+                <ProjectCard href={'https://medium.com/@98johndykes/reverse-engineering-encryption-of-a-korean-ebook-app-197d96b24c96'}
                     thumbnail='/images/korean-ebook-reader-project.webp'
                     title='Reverse Engineering a Korean eBook app'
                     description='Reverse engineering the DRM of an electron-based Korean eBook app. The purpose of this project was to be able to read my Korean eBooks on my kindle reader.'
@@ -27,7 +27,7 @@ export default function Projects() {
                         'Python',
                     ]}
                 ></ProjectCard>
-                <ProjectCard
+                <ProjectCard href={'#'}
                     thumbnail='/images/web-synthesizer.webp'
                     title='Building a Synthesizer Using the Web Audio API'
                     alt='Thumbnail for synthesizer project'
