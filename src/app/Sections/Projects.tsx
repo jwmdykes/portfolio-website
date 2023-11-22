@@ -7,6 +7,21 @@ export default function Projects() {
         <>
             <h3>Projects</h3>
             <div className='flex flex-col gap-20'>
+                <ProjectCard href={'https://synth.jwmdykes.ca'}
+                             thumbnail='/images/synth-app-thumbnail.png'
+                             title='Building a Synthesizer Using the Web Audio API'
+                             alt='Thumbnail for synthesizer project'
+                             description='Creating a basic subtractive synthesizer using tools provided by the web audio API. Works both with a midi keyboard, or via the provided virtual keyboard. The interface was created using the DaisyUI tailwind component library, and ReactJS.'
+                             skills={[
+                                 'Javascript',
+                                 'Typescript',
+                                 'HTML',
+                                 'CSS',
+                                 'TailwindCSS',
+                                 'React',
+                                 'DaisyUI',
+                             ]}
+                ></ProjectCard>
                 <ProjectCard href={'https://medium.com/@98johndykes/creating-a-popup-dictionary-with-electron-part-1-7736c5e99670'}
                     thumbnail='/images/popupdict-project-thumbnail.png'
                     title='Creating a Popup Dictionary with Electron'
@@ -25,21 +40,6 @@ export default function Projects() {
                         'Javascript',
                         'Cryptography',
                         'Python',
-                    ]}
-                ></ProjectCard>
-                <ProjectCard href={'#'}
-                    thumbnail='/images/web-synthesizer.webp'
-                    title='Building a Synthesizer Using the Web Audio API'
-                    alt='Thumbnail for synthesizer project'
-                    description='Creating a basic subtractive synthesizer using tools provided by the web audio API. Works both with a midi keyboard, or via the provided virtual keyboard. The interface was created using the DaisyUI tailwind component library, and ReactJS.'
-                    skills={[
-                        'Javascript',
-                        'Typescript',
-                        'HTML',
-                        'CSS',
-                        'TailwindCSS',
-                        'React',
-                        'DaisyUI',
                     ]}
                 ></ProjectCard>
             </div>
