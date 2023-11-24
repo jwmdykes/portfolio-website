@@ -27,7 +27,7 @@ export default function Experience() {
                     company='Communications Research Centre Canada'
                     date='2019 — 2020'
                     title='Computer Research Programmer'
-                    description='Worked on a team applying machine learning and Geocomputation to telecommunications data, including estimating the interference that cellular towers have on each other.'
+                    description='Worked on applied research in telecommunications, in particular appying machine learning and Geocomputation to telecommunications data. I participated in a week-long course on machine learning and Tensorflow during this time.'
                 ></ExperienceCard>
                 <ExperienceCard
                     href='https://uwaterloo.ca/pure-mathematics/'
@@ -47,8 +47,8 @@ export default function Experience() {
                     company='Carleton University'
                     date='2014 — 2017'
                     title='Bachelor of Mathematics, Honours'
-                    description="After taking two courses at Carleton University during the summer while being homeschooled and receiving A+s in both, I was accepted into the math program in the fall of 2014. I graduated with high distinction in December 2017. I made use of my Python programming skills during a Dean Summer Research Internship (DSRI) scholarship with Dr. Yuly Billig and during my Honour's project with Dr. Brett Stevens."
-                    skills={['Mathematics', 'MATLAB', 'Python']}
+                    description="I graduated with a Bachelor's degree in Mathematics with high distinction in December 2017. I was able to make use of my Python programming skills during a Dean Summer Research Internship (DSRI) scholarship with Dr. Yuly Billig and during my Honour's project with Dr. Brett Stevens."
+                    skills={['Mathematics', 'MATLAB', 'Python', 'Statistics', 'Numerical Optimization']}
                 ></ExperienceCard>
             </div>
             <div className='mt-16 flex justify-end'>

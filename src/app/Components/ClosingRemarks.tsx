@@ -20,9 +20,13 @@ export default function ClosingRemarks() {
             <Link href='https://tailwindcss.com/'>
                 <em className='text-dark-white-color'>Tailwind CSS</em>
             </Link>
-            . Deployed with{' '}
+            . Deployed on{' '}
             <Link href='https://www.digitalocean.com/'>
                 <em className='text-dark-white-color'>Digital Ocean</em>
+            </Link>
+            {' '}using{' '}
+            <Link href='https://www.nginx.com/'>
+                <em className='text-dark-white-color'>NGINX</em>
             </Link>
             .
         </p>
