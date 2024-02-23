@@ -1,141 +1,148 @@
-import React, {useEffect, useRef, useState} from "react";
-import NavigationElement from "@/app/NavigationElement";
+import React, { useEffect, useRef, useState } from 'react';
+import NavigationElement from '@/app/NavigationElement';
 
-export function SectionLinks(props: { refs: React.RefObject<HTMLDivElement>[] }) {
-    const [aboutRef, experienceRef, projectsRef] = props.refs;
+export function SectionLinks(props: {
+  refs: React.RefObject<HTMLDivElement>[];
+}) {
+  const [aboutRef, experienceRef, projectsRef] = props.refs;
 
-    const [activeSection, setActiveSection] = useState('about');
-    const activeSectionUpdatedRef = useRef(activeSection);
-    activeSectionUpdatedRef.current = activeSection;
-    const disconnecting = useRef(false);
-    const timer : React.MutableRefObject<undefined | NodeJS.Timeout> = useRef();
+  const [activeSection, setActiveSection] = useState('about');
+  const activeSectionUpdatedRef = useRef(activeSection);
+  activeSectionUpdatedRef.current = activeSection;
+  const disconnecting = useRef(false);
+  const timer: React.MutableRefObject<undefined | NodeJS.Timeout> = useRef();
 
-    const handleNavClick = (section: string) => {
-        // Set the active section immediately.
-        setActiveSection(section);
+  // Callback for how to deal with user clicking
+  // on navigation link to section.
+  // We scroll to that section, but to avoid the intermediate
+  // section links also becoming highlighted, we add a delay of
+  // 300ms to the highlighting on scroll.
+  const handleNavClick = (section: string) => {
+    setActiveSection(section);
 
-        // Temporarily disable processing in the observer's callback.
-        disconnecting.current = true;
+    // Temporarily disable processing in the observer's callback.
+    disconnecting.current = true;
 
-        // Reset the flag after a delay.
-        clearTimeout(timer.current);
-        timer.current = setTimeout(() => {
-            disconnecting.current = false;
-        }, 300); // Adjust this delay as needed.
+    // Reset the flag after a delay.
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      disconnecting.current = false;
+    }, 300);
+  };
+
+  function sectionPositionInViewport(
+    element: HTMLElement | null
+  ): 'above' | 'below' | 'in' | 'invalid' {
+    if (!element) return 'invalid';
+
+    const rect = element.getBoundingClientRect();
+    const elementMidpoint = rect.top + rect.height / 2;
+
+    if (elementMidpoint < window.innerHeight / 2) return 'above';
+    if (elementMidpoint > window.innerHeight / 2) return 'below';
+
+    return 'in';
+  }
+
+  useEffect(() => {
+    const sections = {
+      about: aboutRef,
+      experience: experienceRef,
+      projects: projectsRef,
+    };
+    const sectionOrder = ['about', 'experience', 'projects'];
+
+    const getPreviousSection = (currentSection: string): string | null => {
+      const index = sectionOrder.indexOf(currentSection);
+      if (index > 0) {
+        return sectionOrder[index - 1];
+      }
+      return null; // if there's no previous section
     };
 
-    function sectionPositionInViewport(
-        element: HTMLElement | null
-    ): 'above' | 'below' | 'in' | 'invalid' {
-        if (!element) return 'invalid';
+    const getNextSection = (currentSection: string): string | null => {
+      const index = sectionOrder.indexOf(currentSection);
+      if (index < sectionOrder.length - 1) {
+        return sectionOrder[index + 1];
+      }
+      return null; // if there's no next section
+    };
 
-        const rect = element.getBoundingClientRect();
-        const elementMidpoint = rect.top + rect.height / 2;
+    const options = {
+      root: null,
+      threshold: 0,
+      rootMargin: '0px 0px -80% 0px',
+    };
 
-        if (elementMidpoint < window.innerHeight / 2) return 'above';
-        if (elementMidpoint > window.innerHeight / 2) return 'below';
+    const callbackFunction = (entries: any) => {
+      if (disconnecting.current) return;
 
-        return 'in';
-    }
-
-    useEffect(() => {
-        const sections = {
-            about: aboutRef,
-            experience: experienceRef,
-            projects: projectsRef,
-        };
-        const sectionOrder = ['about', 'experience', 'projects'];
-
-        const getPreviousSection = (currentSection: string): string | null => {
-            const index = sectionOrder.indexOf(currentSection);
-            if (index > 0) {
-                return sectionOrder[index - 1];
+      entries.forEach((entry: any) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        } else if (entry.target.id === activeSectionUpdatedRef.current) {
+          // Using type assertion here:
+          if (
+            sectionPositionInViewport(
+              sections[entry.target.id as keyof typeof sections].current
+            ) === 'above'
+          ) {
+            const nextSection = getNextSection(activeSectionUpdatedRef.current);
+            if (nextSection) {
+              setActiveSection(nextSection);
             }
-            return null; // if there's no previous section
-        };
-
-        const getNextSection = (currentSection: string): string | null => {
-            const index = sectionOrder.indexOf(currentSection);
-            if (index < sectionOrder.length - 1) {
-                return sectionOrder[index + 1];
-            }
-            return null; // if there's no next section
-        };
-
-        const options = {
-            root: null,
-            threshold: 0,
-            rootMargin: "0px 0px -80% 0px",
-        };
-
-        const callbackFunction = (entries: any) => {
-            if (disconnecting.current) return;
-
-            entries.forEach((entry: any) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
-                } else if (entry.target.id === activeSectionUpdatedRef.current) {
-                    // Using type assertion here:
-                    if (
-                        sectionPositionInViewport(
-                            sections[entry.target.id as keyof typeof sections].current
-                        ) === 'above'
-                    ) {
-                        const nextSection = getNextSection(activeSectionUpdatedRef.current);
-                        if (nextSection) {
-                            setActiveSection(nextSection);
-                        }
-                    } else {
-                        const previousSection = getPreviousSection(
-                            activeSectionUpdatedRef.current
-                        );
-                        if (previousSection) {
-                            setActiveSection(previousSection);
-                        }
-                    }
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(callbackFunction, options);
-
-        Object.values(sections).forEach(
-            (sectionRef: React.RefObject<HTMLDivElement>) => {
-                console.log(sectionRef.current)
-                if (sectionRef.current) observer.observe(sectionRef.current);
-            }
-        );
-
-        return () => {
-            Object.values(sections).forEach(
-                (sectionRef: React.RefObject<HTMLDivElement>) => {
-                    if (sectionRef.current) observer.unobserve(sectionRef.current);
-                }
+          } else {
+            const previousSection = getPreviousSection(
+              activeSectionUpdatedRef.current
             );
-        };
-    }, [aboutRef, experienceRef, projectsRef]);
+            if (previousSection) {
+              setActiveSection(previousSection);
+            }
+          }
+        }
+      });
+    };
 
+    const observer = new IntersectionObserver(callbackFunction, options);
 
-    return <div className="hidden md:block">
-        <ul className="flex flex-col gap-4">
-            <NavigationElement
-                focused={activeSection === "about"}
-                href="#about"
-                text="About"
-                onClick={handleNavClick}
-            ></NavigationElement>
-            <NavigationElement
-                focused={activeSection === "experience"}
-                href="#experience"
-                text="Experience"
-                onClick={handleNavClick}
-            ></NavigationElement>
-            <NavigationElement
-                focused={activeSection === "projects"}
-                href="#projects"
-                text="Projects"
-                onClick={handleNavClick}
-            ></NavigationElement>
-        </ul>
-    </div>;
+    Object.values(sections).forEach(
+      (sectionRef: React.RefObject<HTMLDivElement>) => {
+        console.log(sectionRef.current);
+        if (sectionRef.current) observer.observe(sectionRef.current);
+      }
+    );
+
+    return () => {
+      Object.values(sections).forEach(
+        (sectionRef: React.RefObject<HTMLDivElement>) => {
+          if (sectionRef.current) observer.unobserve(sectionRef.current);
+        }
+      );
+    };
+  }, [aboutRef, experienceRef, projectsRef]);
+
+  return (
+    <div className='hidden md:block'>
+      <ul className='flex flex-col gap-4'>
+        <NavigationElement
+          focused={activeSection === 'about'}
+          href='#about'
+          text='About'
+          onClick={handleNavClick}
+        ></NavigationElement>
+        <NavigationElement
+          focused={activeSection === 'experience'}
+          href='#experience'
+          text='Experience'
+          onClick={handleNavClick}
+        ></NavigationElement>
+        <NavigationElement
+          focused={activeSection === 'projects'}
+          href='#projects'
+          text='Projects'
+          onClick={handleNavClick}
+        ></NavigationElement>
+      </ul>
+    </div>
+  );
 }
